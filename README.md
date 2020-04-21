@@ -1,7 +1,7 @@
 ﻿
 # Google Maps V3 To Azure Maps Web SDK Shim
 
-This project makes it possible to migrate most apps using the Google Maps V3 JavaScript library to the Azure Maps Web SDK with a single line of code. 
+This project makes it possible to migrate most apps using the Google Maps V3 JavaScript library to the Azure Maps Web SDK with a single line of code. This shim covers about 90% of the API interface of Google Maps and simply ignores things it doesn’t support in majority of cases. 
 
 Using this shim is not the same as fully migrating the Azure Maps Web SDK. This shim is designed to mimic the behaviour of the Google Maps V3 JavaScript API. 
 As such, some Azure Maps Web SDK features are disabled to ensure a consistant experience with the API interface of Google Maps. 
