@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Overlaying an Image Map Type</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+         /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+         #map {
+             height: 100%;
+         }
+         /* Optional: Makes the sample page fill the window. */
+         html, body {
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 11,
+                center: { lat: 47.608070, lng: -122.426181}
+            });
+
+            var imageMapType = new google.maps.ImageMapType({
+                getTileUrl: function (coord, zoom) {
+                    return `https://tiles.openseamap.org/seamark/${zoom}/${coord.x}/${coord.y}.png`;
+                },
+                tileSize: new google.maps.Size(256, 256),
+                minZoom: 7,
+                maxZoom: 17,
+                opacity: 0.8
+            });
+
+            map.overlayMapTypes.push(imageMapType);
+        }
+    </script>
+    <script async defer src="{mapScriptUrl}&callback=initMap"></script>
+</body>
+</html>

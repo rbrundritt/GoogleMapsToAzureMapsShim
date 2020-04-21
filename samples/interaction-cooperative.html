@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Cooperative Gesture Handling</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <fieldset>
+        The following is just some scrollable whitespace to demonstrate the the difference.
+        When the page is scrollable and the map is set to auto or cooperative mode, a message will appear when using the scroll wheel or single finger touch on the map.
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </fieldset>
+    <script>
+
+      /**
+       * This sample sets the gesture handling mode to 'cooperative',
+       * which means that on a mobile device, the user must swipe with one
+       * finger to scroll the page and two fingers to pan the map.
+       */
+      function initMap() {
+        var myLatLng = {lat: -25.363, lng: 131.044};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng,
+          gestureHandling: 'cooperative'
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script async defer src="{mapScriptUrl}&callback=initMap"></script>
+    </script>
+  </body>
+</html>

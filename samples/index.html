@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script>
+        var googleMapsKey = '<Your Google Maps Key>';
+        var azureMapsKey = '<Your Azure Maps Key>';
+
+        var googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry,places,visualization&key=' + googleMapsKey;
+        var azureMapsShimUrl = '../dist/GoogleMapsToAzureMapsShim.js?key=' + azureMapsKey;
+
+        var samples = {
+            'Basics': [
+                { name: 'Simple map', url: 'map-simple.html' },
+                { name: 'Showing Pixel and Tile Coordinates', url: 'map-coordinates.html' },
+                { name: 'Localize map', url: 'map-localized.html' },
+                { name: 'Synchronous Loading', url: 'map-sync.html' },
+                { name: 'Lat/Lng Object Literal', url: 'map-latlng-literal.html'}
+            ],
+            'Events': [
+                { name: 'Simple Click Events', url: 'event-simple.html' },
+                { name: 'Map events', url: 'event-map.html' },
+                { name: 'Marker events', url: 'event-marker.html' },
+                { name: 'Polygon events', url: 'event-polygon.html' },
+                { name: 'Using Closures in Event Listeners', url: 'event-closure.html' },
+                { name: 'Accessing Arguments in UI Events', url: 'event-arguments.html' },
+                { name: 'Getting Properties With Event Handlers', url: 'event-properties.html' },
+                { name: 'Getting Lat/Lng from a Click Event', url: 'event-click-latlng.html' },
+                { name: 'Listening to DOM Events', url: 'event-domListener.html' }
+            ],
+            'Controls': [
+                { name: 'Disabling the Default UI', url: 'control-disableUI.html' },
+                { name: 'Replacing Default Controls', url: 'control-replacement.html' },
+                { name: 'Adding Controls to the Map', url: 'control-simple.html' },
+                { name: 'Restricting Map Bounds', url: 'control-bounds-restriction.html' },
+                { name: 'Custom Controls', url: 'control-custom.html'},
+                { name: 'Adding State to Controls', url: 'control-custom-state.html' },
+                { name: 'Cooperative Gesture Handling', url: 'interaction-cooperative.html'}
+            ],
+            'Drawing on the map': [
+                { name: 'Marker Labels', url: 'marker-labels.html' },
+                { name: 'Removing Markers', url: 'marker-remove.html' },
+                { name: 'Simple Marker Icons', url: 'icon-simple.html' },
+                { name: 'Complex Marker Icons', url: 'icon-complex.html' },
+                { name: 'Marker Animations', url: 'marker-animations.html' },
+                { name: 'Marker Animations With setTimeout()', url: 'marker-animations-iteration.html' },
+                { name: 'Info Windows', url: 'infowindow-simple.html' },
+                { name: 'Info Window With maxWidth', url: 'infowindow-simple-max.html' },
+                { name: 'Removing Polylines', url: 'polyline-remove.html' },
+                { name: 'Complex Polylines', url: 'polyline-complex.html' },
+                { name: 'Polygon With Hole', url: 'polygon-hole.html' },
+                { name: 'Circles', url: 'circle-simple.html' },
+                { name: 'Rectangles', url: 'rectangle-simple.html' },
+                { name: 'Rectangle Zoom', url: 'rectangle-zoom.html' },
+                { name: 'Ground Overlays', url: 'groundoverlay-simple.html' },
+                { name: 'Removing Overlays', url: 'overlay-remove.html' },
+                { name: 'Predefined Symbols (Marker)', url: 'marker-symbol-predefined.html' },
+                { name: 'Custom Symbols (Marker)', url: 'marker-symbol-custom.html' },
+                { name: 'Showing/Hiding Overlays', url: 'overlay-hideshow.html'}
+            ],
+            'Layers': [
+                { name: 'KML Layers', url: 'layer-kml.html' },
+                { name: 'Data Layer: Polygon', url: 'layer-data-polygon.html' },
+                { name: 'Data Layer: Simple', url: 'layer-data-simple.html' },
+                { name: 'Data Layer: Styling', url: 'layer-data-style.html' },
+                { name: 'Data Layer: Event Handling', url: 'layer-data-event.html' },
+                { name: 'Data Layer: Dynamic Styling', url: 'layer-data-dynamic.html' },
+                { name: 'Data Layer: Drag and Drop GeoJSON', url: 'layer-data-dragndrop.html' },
+                { name: 'Data Layer: Earthquakes', url: 'layer-data-quakes.html' },
+                { name: 'Data Layer: Custom icons', url:'layer-data-custom-icons.html'},
+                { name: 'Heatmaps', url: 'layer-heatmap.html' },
+                { name: 'GeoRSS Layers', url: 'layer-georss.html' },
+                { name: 'Traffic Layer', url: 'layer-traffic.html' }
+            ],
+            'MapTypes': [
+                { name: 'Overlaying an Image Map Type', url: 'maptype-image-overlay.html' },
+                { name: 'Rotating 45° Imagery', url: 'aerial-rotation.html' }
+            ],
+            'Services': [
+                { name: 'Geocoding Service', url: 'geocoding-simple.html' },
+                { name: 'Reverse Geocoding', url: 'geocoding-reverse.html' },
+                { name: 'Region Code Biasing (ES)', url: 'geocoding-region-es.html' },
+                { name: 'Directions Service', url: 'directions-simple.html' },
+                { name: 'Displaying Text Directions With setPanel()', url: 'directions-panel.html' },                
+                { name: 'Directions Service (Complex)', url: 'directions-complex.html' },
+                { name: 'Travel Modes in Directions', url: 'directions-travel-modes.html' },
+                { name: 'Waypoints in Directions', url: 'directions-waypoints.html' },
+                { name: 'Distance Matrix Service', url: 'distance-matrix.html' }
+            ],
+            'Libraries': [
+                { name: 'Drawing Tools', url: 'drawing-tools.html' },
+                { name: 'Drawing Tools Advanced', url: 'drawing-tools-advanced.html' },
+                { name: 'Navigation Functions (Heading)', url: 'geometry-headings.html' },
+                { name: 'Encoding Methods', url: 'geometry-encodings.html' },
+                { name: 'containsLocation()', url: 'poly-containsLocation.html' }
+            ],
+            'Places': [
+                { name: 'Place Searches', url: 'place-search.html' },
+                { name: 'Place Search Pagination', url: 'place-search-pagination.html' },
+                { name: 'Place Autocomplete', url: 'places-autocomplete.html' },
+                { name: 'Place Autocomplete Address Form', url: 'places-autocomplete-addressform.html' },
+                { name: 'Place Autocomplete Hotel Search', url: 'places-autocomplete-hotelsearch.html' },
+                { name: 'Place Autocomplete Restricted to Multiple Countries', url: 'places-autocomplete-multiple-countries.html' },
+                { name: 'Places Search Box', url: 'places-searchbox.html' },
+                { name: 'Place Autocomplete and Directions', url: 'places-autocomplete-directions.html' }
+            ],
+            'Tutorials': [
+                { name: 'Marker Clustering', url: 'marker-clustering.html' },
+                { name: 'Importing Data into Maps', url: 'importing_data.html' },
+                { name: 'Earthquake Circles', url: 'earthquake-circles.html' },
+                { name: 'Earthquake Heatmaps', url: 'earthquake-heatmap.html' },
+                { name: 'Combining data', url: 'combining-data.html' },
+                { name: 'Using MySQL and PHP with Google Maps', url: 'mysql-to-maps.html' }
+            ]
+        };
+
+        function init() {
+            var html = [];
+
+            Object.keys(samples).forEach(key => {
+                html.push('<b>', key, '</b><ul>');
+
+                samples[key].forEach(sample => {
+                    html.push('<li><a href="javascript:loadSample(\'', sample.url, '\')">', sample.name, '</a></li>');
+                });
+                
+                html.push('</ul>');
+            });
+
+            document.getElementById('sampleList').innerHTML = html.join('');
+        }
+
+        function loadSample(sample) {
+            var samplePath = window.location.href.replace('index.html', '');
+
+            fetch(sample).then(r => r.text()).then(page => {                
+                document.getElementById('am').srcdoc = page.replace('{mapScriptUrl}', azureMapsShimUrl).replace('{samplePath}', samplePath);
+                document.getElementById('gm').srcdoc = page.replace('{mapScriptUrl}', googleMapsUrl).replace('{samplePath}', samplePath);                
+            });
+        }
+    </script>
+    <style>
+        html, body {
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            font-family: Arial;
+            padding: 0 10px 10px 10px;
+        }
+
+        h1 {
+            font-size:20px;
+        }
+
+        .sidePanel {
+            float: left;
+            width: 280px;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+
+        iframe {
+            width: 100%;
+            height: calc(50vh - 60px);
+        }
+
+        table {
+            margin-left:10px;
+            float:left;
+            width: calc(100% - 300px);
+            border-collapse: collapse;
+        }
+
+            table th {
+                font-weight: bold;
+                font-size: 18px;
+                height: 20px;
+            }
+
+            table td:nth-child(2) {
+                width: 250px;
+            }
+
+            table td {
+                vertical-align: top;
+            }
+    </style>
+</head>
+<body onload="init()">
+    <h1>Google Maps v3 to Azure Maps v2 shim samples</h1>
+
+    <div class="sidePanel">
+        <div id="sampleList"></div>
+    </div>
+
+    <table>
+        <tr><th>Original (Google Maps)</th></tr>
+        <tr>
+            <td><iframe id="gm"></iframe></td>
+        </tr>
+        <tr><th>Shimmed (Azure Maps)</th></tr>
+        <tr>
+            <td><iframe id="am"></iframe></td>
+        </tr>
+    </table>
+</body>
+</html>

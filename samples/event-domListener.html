@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Listening to DOM Events</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+         /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+         #map {
+             height: 100%;
+         }
+         /* Optional: Makes the sample page fill the window. */
+         html, body {
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var mapDiv = document.getElementById('map');
+            var map = new google.maps.Map(mapDiv, {
+                zoom: 8,
+                center: new google.maps.LatLng(-34.397, 150.644)
+            });
+
+            // We add a DOM event here to show an alert if the DIV containing the
+            // map is clicked.
+            google.maps.event.addDomListener(mapDiv, 'click', function () {
+                window.alert('Map was clicked!');
+            });
+        }
+    </script>
+    <script async defer src="{mapScriptUrl}&callback=initMap"></script>
+</body>
+</html>
