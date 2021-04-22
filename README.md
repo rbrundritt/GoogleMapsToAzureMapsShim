@@ -33,13 +33,13 @@ Synchornous loading:
 5. Update the `{placeholders}` in the following URL then replace the map script tag for Google Maps with following script tag. 
 
 ```html
-<script async await src="{Path_to_shim_file}/BingMapsV63ToV8Shim.js?callback=initMap&key={Your_Azure_Maps_Key}"></script>
+<script async await src="{Path_to_shim_file}/GoogleMapsToAzureMapsShim.js?key={Your_Azure_Maps_Key}"></script>
 ```
 
 Synchornous loading:
 
 ```html
-<script src="{Path_to_shim_file}/BingMapsV63ToV8Shim.js?key={Your_Azure_Maps_Key}"></script>
+<script src="{Path_to_shim_file}/GoogleMapsToAzureMapsShim.js?key={Your_Azure_Maps_Key}"></script>
 ```
 
 The following URL parameters are also supported:
@@ -128,7 +128,7 @@ This shim provides some support for the following libraries. There is no need to
             });
         }
     </script>
-    <script async defer src="{Path_to_shim_file}/BingMapsV63ToV8Shim.js?callback=initMap&key={Your_Azure_Maps_Key}"></script>
+    <script async defer src="{Path_to_shim_file}/GoogleMapsToAzureMapsShim.js?key={Your_Azure_Maps_Key}"></script>
 </body >
 </html >
 ```
